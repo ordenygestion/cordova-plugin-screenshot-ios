@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cordova-plugin-screenshot-ios-native"
+        version="1.0.0">
+    
+    <name>Screenshot Detector iOS Native</name>
+    <description>Detecta capturas de pantalla usando UIApplication.userDidTakeScreenshotNotification</description>
+    <license>MIT</license>
+    <keywords>cordova,screenshot,ios,detector</keywords>
+    
+    <engines>
+        <engine name="cordova" version=">=3.0.0"/>
+    </engines>
+    
+    <js-module src="www/ScreenshotDetector.js" name="ScreenshotDetector">
+        <clobbers target="window.screenshotDetector" />
+    </js-module>
+    
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="ScreenshotDetector">
+                <param name="ios-package" value="ScreenshotDetector"/>
+                <param name="onload" value="true"/>
+            </feature>
+        </config-file>
+        
+        <header-file src="src/ios/ScreenshotDetector.h" />
+        <source-file src="src/ios/ScreenshotDetector.m" />
+    </platform>
+</plugin>
