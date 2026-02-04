@@ -68,6 +68,46 @@ Para ver logs en Xcode:
 2. Ejecuta en simulador o dispositivo
 3. Mira la consola: `[ScreenshotDetector] ¡SCREENSHOT DETECTADO!`
 
+## 🎬 Detección de Grabación de Pantalla
+
+Desde iOS 11+, el plugin también detecta cuando el usuario inicia o detiene una grabación de pantalla.
+
+### Eventos disponibles:
+
+1. **`screenshotDetected`** - Se dispara cuando se toma una captura de pantalla
+2. **`screenRecordingStarted`** - Se dispara cuando inicia la grabación (iOS 11+)
+3. **`screenRecordingStopped`** - Se dispara cuando finaliza la grabación (iOS 11+)
+
+### Ejemplo de uso completo:
+
+```javascript
+document.addEventListener('deviceready', function() {
+    
+    // Detectar capturas de pantalla
+    document.addEventListener('screenshotDetected', function(event) {
+        console.log('Screenshot detectado', event.timestamp);
+        // Tu código aquí
+    }, false);
+    
+    // Detectar inicio de grabación
+    document.addEventListener('screenRecordingStarted', function(event) {
+        console.log('Grabación iniciada', event.timestamp);
+        // Tu código aquí
+    }, false);
+    
+    // Detectar fin de grabación
+    document.addEventListener('screenRecordingStopped', function(event) {
+        console.log('Grabación finalizada', event.timestamp);
+        // Tu código aquí
+    }, false);
+    
+}, false);
+```
+
+### Compatibilidad:
+- **Screenshots:** iOS 7+
+- **Screen Recording:** iOS 11+
+
 ## 📄 Licencia
 
 MIT
